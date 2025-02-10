@@ -1,35 +1,58 @@
-import { Container, Image, Row, Col, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import PSINavbar from './components/PSINavbar'
 import customs_logo from '../customs_logo.png'
+import epson_logo from './assets/Epson_logo.svg'
+
 function App() {
 
   function handleClickKawasanBerikat() {
     const url = window.location.href;
     const arr = url.split("/");
     const rootdomain = arr[0] + "//" + arr[2];
-    console.log(rootdomain)
+    
     window.open(rootdomain + '/inventory')
+  }
+
+  function handleClickIEIPage() {
+    const url = window.location.href;
+    const arr = url.split("/");
+    const rootdomain = arr[0] + "//" + arr[2];
+    
+    window.open(rootdomain + '/iei')
   }
 
   return (
     <>
       <PSINavbar />
       <Container fluid>
-        <Row>
+        <Row xs={1} md={2} className='g-4 mt-1'>
           <Col className='text-center'>
-            <Image src={customs_logo} className='w-25' />
+            <Card className='p-3'>
+              <Card.Img variant="top" src={customs_logo} style={{ objectFit: 'contain' }} height={250} />
+              <Card.Body>
+                <Card.Title>IT Inventory <span className='fst-italic'>for</span> Bea Cukai</Card.Title>
+                <Card.Text>
+
+                </Card.Text>
+                <Button variant='primary' onClick={handleClickKawasanBerikat}>Kawasan Berikat</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col className='text-center'>
+            <Card className='p-3'>
+              <Card.Img variant="top" src={epson_logo} style={{ objectFit: 'contain' }} height={250} />
+              <Card.Body>
+                <Card.Title>PT. Epson Indonesia Industry</Card.Title>
+                <Card.Text>
+
+                </Card.Text>
+                <Button variant='primary' onClick={handleClickIEIPage}>Go to Login Page</Button>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
-        <Row>
-          <Col className='text-center'>
-            <p className='fs-1' style={{ textShadow: '1px 2px #808080' }}>IT Inventory <span className='fst-italic'>for</span> Bea Cukai</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col className='text-center'>
-            <Button variant='primary' onClick={handleClickKawasanBerikat}>Kawasan Berikat</Button>
-          </Col>
-        </Row>
+
+
       </Container>
 
     </>
